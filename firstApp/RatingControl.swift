@@ -14,7 +14,7 @@ class RatingControl: UIStackView {
     
     var rating = 0 {
         didSet {
-            NSLog("rating didset")
+            NSLog("RatingControl didset")
             updateButtonSelectionStates()
         }
     }
@@ -35,6 +35,7 @@ class RatingControl: UIStackView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        NSLog("RatingControl init")
         setupButtons()
     }
     
@@ -108,6 +109,7 @@ class RatingControl: UIStackView {
         }
         
         updateButtonSelectionStates()
+        NSLog("setupButtons fin")
     }
     
     private func updateButtonSelectionStates() {

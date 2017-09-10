@@ -23,9 +23,11 @@ class MealTableViewController: UITableViewController {
     
     private func loadSampleMeals() {
         
-        let photo1 = UIImage(named: "meal1")
-        let photo2 = UIImage(named: "meal2")
-        let photo3 = UIImage(named: "meal3")
+        NSLog("MealTableViewController loadSampleMeals")
+        
+        let photo1 = UIImage(named: "Image")
+        let photo2 = UIImage(named: "Image")
+        let photo3 = UIImage(named: "Image")
         
         guard let meal1 = Meal(name: "Caprese Salad", photo: photo1, rating: 4) else {
             fatalError("Unable to instantiate meal1")
@@ -40,6 +42,7 @@ class MealTableViewController: UITableViewController {
         }
         
         meals += [meal1, meal2, meal3]
+        NSLog("MealTableViewController loadSampleMeals fin")
     }
     
 
@@ -49,26 +52,52 @@ class MealTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        
+        NSLog("MealTableViewController numberOfSectionsInTableView inicio")
+        
+        //This code makes the table view show 1 section instead of 0.
+        return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+        
+        NSLog("MealTableViewController tableView numberOfRowsInSection inicio")
+        
+        //return the appropriate number of rows to the table view
+        return meals.count
     }
-
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+        
+        NSLog("MealTableViewController tableView inicio")
+        
+        //
+        //requests a cell from the table view. Instead of creating new cells and deleting old cells as the user scrolls, the table tries to reuse the cells when possible.
+        
+        // Table view cells are reused and should be dequeued using a cell identifier.
+        //NSLog("MealTableViewController tableView " + indexPath.indexAtPosition(0).description)
+        
+        guard let cell = tableView.dequeueReusableCellWithIdentifier("cellIdentifier", forIndexPath: indexPath) as? MealTableViewCell else {
+            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+        }
+        
+        // Fetches the appropriate meal for the data source layout.
+        let meal = meals[indexPath.row]
+        
+        NSLog("MealTableViewController tableView " + meal.name)
+        
+        cell.label.text = meal.name
+        cell.image2.image = meal.photo
+        cell.rating.rating = meal.rating
+        
+        
+        NSLog("MealTableViewController tableView fin")
+        
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

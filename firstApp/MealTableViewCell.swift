@@ -11,11 +11,12 @@ import UIKit
 class MealTableViewCell: UITableViewCell {
 
     
-    @IBOutlet weak var image1: UIImageView!
+    @IBOutlet weak var image2: UIImageView!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var rating: RatingControl!
     
     override func awakeFromNib() {
+        NSLog("MealTableViewCell awakeFromNib")
         super.awakeFromNib()
         // Initialization code
     }

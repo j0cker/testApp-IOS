@@ -5,16 +5,16 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Meal Table View Controller-->
         <scene sceneID="Ws0-0t-mBu">
             <objects>
-                <tableViewController id="hkx-Cf-tYW" sceneMemberID="viewController">
+                <tableViewController id="hkx-Cf-tYW" customClass="MealTableViewController" customModule="firstApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="Kij-6l-gXq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="90" id="qFw-Od-rVJ" customClass="MealTableViewCell" customModule="firstApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cellIdentifier" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellIdentifier" rowHeight="90" id="qFw-Od-rVJ" customClass="MealTableViewCell" customModule="firstApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qFw-Od-rVJ" id="PKq-fa-M1z">
@@ -30,13 +30,13 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a7D-XP-bko" customClass="RatingControl" customModule="firstApp" customModuleProvider="target">
+                                        <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a7D-XP-bko" customClass="RatingControl" customModule="firstApp" customModuleProvider="target">
                                             <rect key="frame" x="177" y="28" width="156" height="61"/>
                                         </stackView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="image" destination="JrK-5V-Q9j" id="Aqc-Bx-uuu"/>
+                                    <outlet property="image2" destination="JrK-5V-Q9j" id="uDS-ET-4dC"/>
                                     <outlet property="label" destination="yIy-A5-IR1" id="gT0-gH-2b9"/>
                                     <outlet property="rating" destination="a7D-XP-bko" id="bOo-dh-VFb"/>
                                 </connections>
