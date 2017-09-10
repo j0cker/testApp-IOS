@@ -25,6 +25,7 @@ class MealTableViewController: UITableViewController {
         
         NSLog("MealTableViewController loadSampleMeals")
         
+        
         let photo1 = UIImage(named: "Image")
         let photo2 = UIImage(named: "Image")
         let photo3 = UIImage(named: "Image")
