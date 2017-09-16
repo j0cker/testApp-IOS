@@ -15,20 +15,52 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet var selectImageFromPhotoLibrary: UITapGestureRecognizer!
-    
     @IBOutlet weak var ratingControl: RatingControl!
-
-    
     @IBOutlet weak var Save: UIBarButtonItem!
+    @IBOutlet weak var cancel: UIBarButtonItem!
     /*
      This value is either passed by `MealTableViewController` in `prepare(for:sender:)`
      or constructed as part of adding a new meal.
      */
     var meal: Meal?
     
+    func cancel(sender: UIBarButtonItem) {
+        NSLog("MealViewController cancel UIBarButtonItem")
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        updateSaveButtonState()
+        navigationItem.title = textField.text
+    }
+    
+    private func updateSaveButtonState() {
+        // Disable the Save button if the text field is empty.
+        let text = textField.text ?? ""
+        Save.enabled = !text.isEmpty
+    }
+    
     @IBAction func setDefaultlabelView(sender: UIButton) {
-        NSLog("hola")
+        NSLog("default text")
         labelView.text = "Default Text"
+    }
+    
+    func loadViewComponents() {
+        
+        //button with image
+        //let btnCancel = UIButton()
+        //btnCancel.setImage(UIImage(named: "crossbuttonimagename"), forState: .Normal)
+        //btnCancel.frame = CGRectMake(0, 0, 25, 25)
+        //btnCancel.addTarget(self, action: #selector(MealViewController.cancel), forControlEvents: .TouchUpInside)
+        
+        //Set Left Bar Button item
+        let leftBarButton = UIBarButtonItem()
+        leftBarButton.title = "Cancel"
+        leftBarButton.action = #selector(MealViewController.cancel)
+        leftBarButton.target = self
+        
+        //leftBarButton.customView = btnCancel
+        self.navigationItem.leftBarButtonItem = leftBarButton
     }
     
     override func viewDidLoad() {
@@ -38,6 +70,8 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         
         // Handle the text field’s user input through delegate callbacks.
         textField.delegate = self
+        
+        loadViewComponents()
         
         // Set up views if editing an existing Meal.
         if let meal = meal {
@@ -50,6 +84,8 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         let tapGesture = UITapGestureRecognizer(target:self, action: #selector(MealViewController.imagePressed))
         imageView.userInteractionEnabled = true // this line is important
         imageView.addGestureRecognizer(tapGesture)
+        
+        updateSaveButtonState()
     }
     
     override func didReceiveMemoryWarning() {
@@ -63,33 +99,31 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         
         super.prepareForSegue(segue, sender: sender)
         
-        NSLog("MealViewController prepare " + segue.identifier.debugDescription + " " + segue.accessibilityLabel.debugDescription + " " + segue.debugDescription)
+        NSLog("MealViewController prepareForSegue")
+        
         // Configure the destination view controller only when the save button is pressed.
         if segue.identifier=="Save" {
             NSLog("The save button was not pressed, cancelling")
             return
         }
         
-        NSLog("MealViewController prepare 2 text " + textField.text.debugDescription )
-        
-        let name = self.textField.text ?? "nil" //make this optional if it’s nil, the operator the returns the empty string ("") instead.
+        //make this optional if it’s nil, the operator the returns the empty string ("") instead.
+        let name = self.textField.text ?? ""
         let photo = self.imageView.image
-        NSLog("MealViewController prepare 3 text " + textField.text.debugDescription + " image " + imageView.image.debugDescription)
-        //ratingControl.rating2 = 5
-        //let rating = ratingControl.getRating2()
         let rating = self.ratingControl.rating
-        NSLog("MealViewController prepare 4 text " + textField.text.debugDescription )
         
         // Set the meal to be passed to MealTableViewController after the unwind segue.
         meal = Meal(name: name, photo: photo, rating: rating)
         
-        NSLog("MealViewController prepare fin")
     }
     
     //you resign first responder status all mayority events passes here
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // Hide the keyboard when touch enter.
         textField.resignFirstResponder()
+        
+        let text = textField.text ?? ""
+        Save.enabled = !text.isEmpty
         return true
     }
     

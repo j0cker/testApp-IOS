@@ -13,6 +13,7 @@ class RatingControl: UIStackView {
     
     private var ratingButtons = [UIButton]()
     
+    //set and get methods are built automatically
     internal var rating: Int = 0 {
         didSet {
             NSLog("RatingControl didset")
@@ -44,15 +45,6 @@ class RatingControl: UIStackView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupButtons()
-    }
-    
-    func setRating2 (newValue: Int){
-        self.rating = newValue
-    }
-    
-    internal func getRating2 () -> Int {
-        NSLog("RatingControl getRating2")
-        return self.rating
     }
     
     private func setupButtons() {

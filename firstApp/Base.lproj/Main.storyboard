@@ -176,6 +176,7 @@
                     <connections>
                         <outlet property="Save" destination="ueo-Lb-foc" id="CJ2-d7-LWl"/>
                         <outlet property="button1" destination="5kB-la-cjY" id="UmA-sV-Ieq"/>
+                        <outlet property="cancel" destination="O6p-7c-bPE" id="KIr-MR-PCF"/>
                         <outlet property="imageView" destination="xRQ-l6-EkF" id="hTM-0f-k8W"/>
                         <outlet property="labelView" destination="vSf-jb-pwT" id="sR0-Ga-jfT"/>
                         <outlet property="ratingControl" destination="eNe-4T-YH1" id="ruY-bE-VYd"/>
