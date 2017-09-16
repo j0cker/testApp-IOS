@@ -17,6 +17,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     @IBOutlet var selectImageFromPhotoLibrary: UITapGestureRecognizer!
     
     @IBOutlet weak var ratingControl: RatingControl!
+
     
     @IBOutlet weak var Save: UIBarButtonItem!
     /*
@@ -36,8 +37,16 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         // Do any additional setup after loading the view, typically from a nib.
         
         // Handle the text field’s user input through delegate callbacks.
-        Save.title! = "Save"
         textField.delegate = self
+        
+        // Set up views if editing an existing Meal.
+        if let meal = meal {
+            navigationItem.title = meal.name
+            textField.text = meal.name
+            imageView.image = meal.photo
+            ratingControl.rating = meal.rating
+        }
+        
         let tapGesture = UITapGestureRecognizer(target:self, action: #selector(MealViewController.imagePressed))
         imageView.userInteractionEnabled = true // this line is important
         imageView.addGestureRecognizer(tapGesture)
@@ -52,6 +61,8 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
+        super.prepareForSegue(segue, sender: sender)
+        
         NSLog("MealViewController prepare " + segue.identifier.debugDescription + " " + segue.accessibilityLabel.debugDescription + " " + segue.debugDescription)
         // Configure the destination view controller only when the save button is pressed.
         if segue.identifier=="Save" {
@@ -59,11 +70,15 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
             return
         }
         
-        NSLog("MealViewController prepare 2")
+        NSLog("MealViewController prepare 2 text " + textField.text.debugDescription )
         
-        let name = textField.text ?? "nil" //make this optional if it’s nil, the operator the returns the empty string ("") instead.
-        let photo = imageView.image
-        let rating = ratingControl.rating
+        let name = self.textField.text ?? "nil" //make this optional if it’s nil, the operator the returns the empty string ("") instead.
+        let photo = self.imageView.image
+        NSLog("MealViewController prepare 3 text " + textField.text.debugDescription + " image " + imageView.image.debugDescription)
+        //ratingControl.rating2 = 5
+        //let rating = ratingControl.getRating2()
+        let rating = self.ratingControl.rating
+        NSLog("MealViewController prepare 4 text " + textField.text.debugDescription )
         
         // Set the meal to be passed to MealTableViewController after the unwind segue.
         meal = Meal(name: name, photo: photo, rating: rating)

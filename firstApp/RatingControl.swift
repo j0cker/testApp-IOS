@@ -8,16 +8,18 @@
 
 import UIKit
 
+
 class RatingControl: UIStackView {
     
     private var ratingButtons = [UIButton]()
     
-    var rating = 0 {
+    internal var rating: Int = 0 {
         didSet {
             NSLog("RatingControl didset")
             updateButtonSelectionStates()
         }
     }
+    
     
     @IBInspectable var starCount: Int = 5 {
         didSet {
@@ -42,6 +44,15 @@ class RatingControl: UIStackView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupButtons()
+    }
+    
+    func setRating2 (newValue: Int){
+        self.rating = newValue
+    }
+    
+    internal func getRating2 () -> Int {
+        NSLog("RatingControl getRating2")
+        return self.rating
     }
     
     private func setupButtons() {
@@ -125,7 +136,6 @@ class RatingControl: UIStackView {
             //dispatch_async i use it in order to make the button clicked a highleted, if dont use it the button clicked doesnt get highlighted and the others buttons does.
             dispatch_async(dispatch_get_main_queue(), {
                 if index + 1<=self.rating{
-                    NSLog("Entro")
                     button.highlighted = true
                 } else {
                     button.highlighted = false
@@ -159,7 +169,7 @@ class RatingControl: UIStackView {
             
         }
         
-        
+        NSLog("updateButtonSelectionStates fin rating " + rating.description)
     }
     
     func ratingButtonTapped(button:UIButton) {

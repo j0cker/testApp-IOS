@@ -134,12 +134,17 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="300" verticalCompressionResistancePriority="300" translatesAutoresizingMaskIntoConstraints="NO" id="eNe-4T-YH1" customClass="RatingControl" customModule="firstApp" customModuleProvider="target">
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="300" verticalCompressionResistancePriority="300" restorationIdentifier="ratingControl" translatesAutoresizingMaskIntoConstraints="NO" id="eNe-4T-YH1" customClass="RatingControl" customModule="firstApp">
                                         <rect key="frame" x="200" y="477" width="200" height="51"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="51" id="2eG-ZU-vte"/>
                                             <constraint firstAttribute="width" constant="200" id="dT6-im-JcE"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="starCount">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -173,6 +178,7 @@
                         <outlet property="button1" destination="5kB-la-cjY" id="UmA-sV-Ieq"/>
                         <outlet property="imageView" destination="xRQ-l6-EkF" id="hTM-0f-k8W"/>
                         <outlet property="labelView" destination="vSf-jb-pwT" id="sR0-Ga-jfT"/>
+                        <outlet property="ratingControl" destination="eNe-4T-YH1" id="ruY-bE-VYd"/>
                         <outlet property="selectImageFromPhotoLibrary" destination="AwK-R7-p8g" id="5kz-tv-qSV"/>
                         <outlet property="textField" destination="qF4-cy-W1L" id="y8e-Xo-lBh"/>
                     </connections>
