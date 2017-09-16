@@ -21,6 +21,30 @@ class MealTableViewController: UITableViewController {
         loadSampleMeals()
     }
     
+    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.sourceViewController as? MealViewController, let meal = sourceViewController.meal {
+            
+            NSLog("MealTableViewController unwindToMealList")
+            
+            // Add a new meal.
+            
+            //swift3
+            //let newIndexPath = IndexPath(row: meals.count, section: 0)
+            
+            let newIndexPath = NSIndexPath(forRow: meals.count, inSection: 0)
+            
+            //new meal will be inserted
+            meals.append(meal)
+            //new row to the table
+            //.automatic animation option uses the best animation based on the table’s current state, and the insertion point’s location.
+            //swift3
+            //tableView.insertRows(at: [newIndexPath], with: .automatic)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            
+            
+        }
+    }
+    
     private func loadSampleMeals() {
         
         NSLog("MealTableViewController loadSampleMeals")

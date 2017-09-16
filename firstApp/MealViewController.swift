@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var labelView: UILabel!
@@ -18,6 +18,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     
     @IBOutlet weak var ratingControl: RatingControl!
     
+    @IBOutlet weak var Save: UIBarButtonItem!
+    /*
+     This value is either passed by `MealTableViewController` in `prepare(for:sender:)`
+     or constructed as part of adding a new meal.
+     */
+    var meal: Meal?
     
     @IBAction func setDefaultlabelView(sender: UIButton) {
         NSLog("hola")
@@ -30,8 +36,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         // Do any additional setup after loading the view, typically from a nib.
         
         // Handle the text field’s user input through delegate callbacks.
+        Save.title! = "Save"
         textField.delegate = self
-        let tapGesture = UITapGestureRecognizer(target:self, action: #selector(ViewController.imagePressed))
+        let tapGesture = UITapGestureRecognizer(target:self, action: #selector(MealViewController.imagePressed))
         imageView.userInteractionEnabled = true // this line is important
         imageView.addGestureRecognizer(tapGesture)
     }
@@ -39,6 +46,29 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    /* This method lets you configure a view controller before it's presented.*/
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        NSLog("MealViewController prepare " + segue.identifier.debugDescription + " " + segue.accessibilityLabel.debugDescription + " " + segue.debugDescription)
+        // Configure the destination view controller only when the save button is pressed.
+        if segue.identifier=="Save" {
+            NSLog("The save button was not pressed, cancelling")
+            return
+        }
+        
+        NSLog("MealViewController prepare 2")
+        
+        let name = textField.text ?? "nil" //make this optional if it’s nil, the operator the returns the empty string ("") instead.
+        let photo = imageView.image
+        let rating = ratingControl.rating
+        
+        // Set the meal to be passed to MealTableViewController after the unwind segue.
+        meal = Meal(name: name, photo: photo, rating: rating)
+        
+        NSLog("MealViewController prepare fin")
     }
     
     //you resign first responder status all mayority events passes here

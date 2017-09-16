@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		25A488C61F48890800FDD4DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A488C51F48890800FDD4DB /* AppDelegate.swift */; };
-		25A488C81F48890800FDD4DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A488C71F48890800FDD4DB /* ViewController.swift */; };
+		25A488C81F48890800FDD4DB /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A488C71F48890800FDD4DB /* MealViewController.swift */; };
 		25A488CB1F48890800FDD4DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25A488C91F48890800FDD4DB /* Main.storyboard */; };
 		25A488CD1F48890800FDD4DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25A488CC1F48890800FDD4DB /* Assets.xcassets */; };
 		25A488D01F48890800FDD4DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25A488CE1F48890800FDD4DB /* LaunchScreen.storyboard */; };
@@ -40,7 +40,7 @@
 /* Begin PBXFileReference section */
 		25A488C21F48890800FDD4DB /* firstApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = firstApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25A488C51F48890800FDD4DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		25A488C71F48890800FDD4DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		25A488C71F48890800FDD4DB /* MealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
 		25A488CA1F48890800FDD4DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		25A488CC1F48890800FDD4DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25A488CF1F48890800FDD4DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -106,7 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				25A488C51F48890800FDD4DB /* AppDelegate.swift */,
-				25A488C71F48890800FDD4DB /* ViewController.swift */,
+				25A488C71F48890800FDD4DB /* MealViewController.swift */,
 				25A488F31F48A11F00FDD4DB /* RatingControl.swift */,
 				25E8403F1F648C12003A3D24 /* Meal.swift */,
 				25E8403D1F648947003A3D24 /* MealTableViewController.swift */,
@@ -271,7 +271,7 @@
 			files = (
 				25E8403E1F648947003A3D24 /* MealTableViewController.swift in Sources */,
 				25E8403A1F648100003A3D24 /* MealTableViewCell.swift in Sources */,
-				25A488C81F48890800FDD4DB /* ViewController.swift in Sources */,
+				25A488C81F48890800FDD4DB /* MealViewController.swift in Sources */,
 				25A488F41F48A11F00FDD4DB /* RatingControl.swift in Sources */,
 				25E840401F648C12003A3D24 /* Meal.swift in Sources */,
 				25A488C61F48890800FDD4DB /* AppDelegate.swift in Sources */,
